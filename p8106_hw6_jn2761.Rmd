@@ -35,7 +35,7 @@ scale_fill_discrete =scale_fill_viridis_d
 
 ## Problem 1
 
-Import data
+### Import data
 ```{r}
 birthweight_df = read_csv("./data/birthweight.csv") %>%
   na.omit() 
@@ -51,24 +51,62 @@ birthweight_df %>%
 
 From description of variable, we know that variable`babysex`, `frace`,`malform`,`mrace` should be factor
 ```{r}
+birthweight_df=
 birthweight_df %>%
    mutate(babysex = ifelse(babysex == 1, "male","female"),
      malform = ifelse(malform == 0, "absent","present"),
           frace = recode(frace, `1` = "White", `2`="Black", `3` = "Asian", `4` = "Puerto Rican", `8` = "Other", `9` = "Unknown"),
           mrace = recode(mrace, `1` = "White", `2`="Black", `3` = "Asian", `4` = "Puerto Rican", `8` = "Other"))
 ```
-Fit models
+
+
+### Propose a regression model for birthweight
+
+In order to find the variable of interest, I did research on the potential risk factor that influence newborn's birthwright, and here is what I found:
+
+- *The present study revealed that* ***maternal illiteracy, exposure to passive smoking, late child bearing, shorter inter-pregnancy interval, previous LBW baby, maternal weight, weight gain during pregnancy, PIH, high risk pregnancy and late antenatal registration*** *were the risk factors significantly associated with the birth weight of a newborn(Metgud,2012)* 
+- [Click Here to see the original paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3390317/#)
+
+For the current homework, I will choose variable`gaweeks`(as measurement for inter-pregnancy interval) and `momage`(as measurement for late child bearing)as my predictor, and `bwt` as my outcome.
+
+
+
 ```{r}
 birthweight_df %>%
-  ggplot(aes(x=delwt,y=bwt, color= mrace))+
-  geom_point() +
+  ggplot(aes(x=gaweeks,y=bwt,color=smoken))+
+  geom_point(alpha=0.5) +
   facet_grid(.~babysex)
-```
-```{r}
+
 birthweight_df %>%
-  ggplot(aes(x=delwt,y=bwt, color= mrace))+
-  geom_point() +
-  facet_grid(.~malform)
+  ggplot(aes(x=momage,y=bwt,color=smoken))+
+  geom_point(alpha=0.5) 
 ```
 
+Fit in a linear model:
+```{r}
+Lin_mod = lm(bwt ~ momage + gaweeks, data = birthweight_df)
+broom::tidy(Lin_mod)
+
+
+```
+
+### plot of model residuals against fitted value
+```{r}
+
+library(patchwork)
+
+momage_res=
+modelr::add_residuals(birthweight_df, Lin_mod) %>%
+  ggplot(aes(x=momage,y=resid))+
+   geom_point() 
+
+gaweeks_res=
+modelr::add_residuals(birthweight_df, Lin_mod) %>%
+  ggplot(aes(x=gaweeks,y=resid))+
+   geom_point() 
+
+momage_res+gaweeks_res
+```
+
+### Comparing with two other model
 
