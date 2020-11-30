@@ -1,0 +1,74 @@
+---
+title: "p8105_hw6_jn2761"
+author: "jiaying Ning"
+date: "11/30/2020"
+output: html_document
+---
+
+load packages
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggridges)
+library(modelr)
+library(mgcv)
+library(readxl)
+library(janitor)
+
+
+knitr::opts_chunk$set(
+  fig.width = 6,
+    fig.asp = .6,
+  out.width = "90%"
+
+)
+
+theme_set(theme_minimal()+theme(legend.position = "bottom"))
+
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+
+scale_color_discrete = scale_color_viridis_d
+scale_fill_discrete =scale_fill_viridis_d
+```
+
+## Problem 1
+
+Import data
+```{r}
+birthweight_df = read_csv("./data/birthweight.csv") %>%
+  na.omit() 
+
+
+  
+  
+```
+```{r}
+birthweight_df %>%
+  summary()
+```
+
+From description of variable, we know that variable`babysex`, `frace`,`malform`,`mrace` should be factor
+```{r}
+birthweight_df %>%
+   mutate(babysex = ifelse(babysex == 1, "male","female"),
+     malform = ifelse(malform == 0, "absent","present"),
+          frace = recode(frace, `1` = "White", `2`="Black", `3` = "Asian", `4` = "Puerto Rican", `8` = "Other", `9` = "Unknown"),
+          mrace = recode(mrace, `1` = "White", `2`="Black", `3` = "Asian", `4` = "Puerto Rican", `8` = "Other"))
+```
+Fit models
+```{r}
+birthweight_df %>%
+  ggplot(aes(x=delwt,y=bwt, color= mrace))+
+  geom_point() +
+  facet_grid(.~babysex)
+```
+```{r}
+birthweight_df %>%
+  ggplot(aes(x=delwt,y=bwt, color= mrace))+
+  geom_point() +
+  facet_grid(.~malform)
+```
+
+
