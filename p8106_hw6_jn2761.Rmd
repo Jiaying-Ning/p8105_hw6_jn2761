@@ -192,15 +192,39 @@ weather_df =
 ```
 
 ### Bootstrapping 
-nyc_airbnb %>% 
-  filter(boro == "Manhattan") %>% 
-  modelr::bootstrap(n = 1000) %>% 
+
+95% confidence interval for r̂ 2 
+
+```{r}
+weather_bootstrap=
+weather_df %>% 
+  modelr::bootstrap(n = 5000) %>% 
   mutate(
-    models = map(strap, ~ lm(price ~ stars + room_type, data = .x)),
-    results = map(models, broom::tidy)) %>% 
+    models = map(strap, ~ lm(tmax ~ tmin, data = .x)))
+
+```
+
+
+- 95% confidence interval for r̂ 2 
+
+
+```{r}
+weather_bootstrap%>%
+  mutate(
+    results = map(models, broom::glance)) %>% 
   select(results) %>% 
-  unnest(results) %>% 
-  filter(term == "stars") %>% 
-  ggplot(aes(x = estimate)) + geom_density()
+  unnest(results) %>%
+  summarise(
+    ci_lower=quantile(r.squared,0.025),
+    ci_upper=quantile(r.squared,0.975)
+  )
+```
+
+
+- 95% confidence interval for log(β̂ 0∗β̂ 1)
+
+
+
+
 
 
