@@ -2,7 +2,9 @@
 title: "p8105_hw6_jn2761"
 author: "jiaying Ning"
 date: "11/30/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 load packages
@@ -194,6 +196,23 @@ weather_df %>%
     models = map(strap, ~ lm(tmax ~ tmin, data = .x)))
 
 ```
+
+
+
+#### Plot distribution of estimate
+
+```{r}
+weather_bootstrap %>% 
+  mutate(results = map(models, broom::tidy)) %>% 
+  select(results) %>% 
+  unnest(results) %>% 
+    filter(term == "tmin") %>% 
+  ggplot(aes(x = estimate)) + geom_density()
+```
+
+This distribution of regression coefficient is relatively normal, which means that bootstrap has succefully resample the dataset with replacement and establish normality and satisified distributional assumption. 
+
+
 
 
 #### 95% confidence interval for r̂ 2 

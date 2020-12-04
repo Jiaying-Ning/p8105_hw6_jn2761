@@ -1,0 +1,463 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={p8105\_hw6\_jn2761},
+            pdfauthor={jiaying Ning},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{p8105\_hw6\_jn2761}
+\author{jiaying Ning}
+\date{11/30/2020}
+
+\begin{document}
+\maketitle
+
+load packages
+
+\hypertarget{problem-1}{%
+\subsection{Problem 1}\label{problem-1}}
+
+\hypertarget{import-data}{%
+\subsubsection{Import data}\label{import-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{birthweight_df =}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"./data/birthweight.csv"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{na.omit}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   .default = col_double()
+## )
+\end{verbatim}
+
+\begin{verbatim}
+## See spec(...) for full column specifications.
+\end{verbatim}
+
+From description of variable, we know that variable\texttt{babysex},
+\texttt{frace},\texttt{malform},\texttt{mrace} should be factor
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{birthweight_df=}
+\NormalTok{birthweight_df }\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{babysex =} \KeywordTok{ifelse}\NormalTok{(babysex }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{, }\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{),}
+     \DataTypeTok{malform =} \KeywordTok{ifelse}\NormalTok{(malform }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{, }\StringTok{"absent"}\NormalTok{,}\StringTok{"present"}\NormalTok{),}
+          \DataTypeTok{frace =} \KeywordTok{recode}\NormalTok{(frace, }\StringTok{`}\DataTypeTok{1}\StringTok{`}\NormalTok{ =}\StringTok{ "White"}\NormalTok{, }\StringTok{`}\DataTypeTok{2}\StringTok{`}\NormalTok{=}\StringTok{"Black"}\NormalTok{, }\StringTok{`}\DataTypeTok{3}\StringTok{`}\NormalTok{ =}\StringTok{ "Asian"}\NormalTok{, }\StringTok{`}\DataTypeTok{4}\StringTok{`}\NormalTok{ =}\StringTok{ "Puerto Rican"}\NormalTok{, }\StringTok{`}\DataTypeTok{8}\StringTok{`}\NormalTok{ =}\StringTok{ "Other"}\NormalTok{, }\StringTok{`}\DataTypeTok{9}\StringTok{`}\NormalTok{ =}\StringTok{ "Unknown"}\NormalTok{),}
+          \DataTypeTok{mrace =} \KeywordTok{recode}\NormalTok{(mrace, }\StringTok{`}\DataTypeTok{1}\StringTok{`}\NormalTok{ =}\StringTok{ "White"}\NormalTok{, }\StringTok{`}\DataTypeTok{2}\StringTok{`}\NormalTok{=}\StringTok{"Black"}\NormalTok{, }\StringTok{`}\DataTypeTok{3}\StringTok{`}\NormalTok{ =}\StringTok{ "Asian"}\NormalTok{, }\StringTok{`}\DataTypeTok{4}\StringTok{`}\NormalTok{ =}\StringTok{ "Puerto Rican"}\NormalTok{, }\StringTok{`}\DataTypeTok{8}\StringTok{`}\NormalTok{ =}\StringTok{ "Other"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{propose-a-regression-model-for-birthweight}{%
+\subsubsection{Propose a regression model for
+birthweight}\label{propose-a-regression-model-for-birthweight}}
+
+In order to find the variable of interest, I did research on the
+potential risk factor that influence newborn's birthwright, and here is
+what I found:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{The present study revealed that} \textbf{\emph{maternal
+  illiteracy, exposure to passive smoking, late child bearing, shorter
+  inter-pregnancy interval, previous LBW baby, maternal weight, weight
+  gain during pregnancy, PIH, high risk pregnancy and late antenatal
+  registration}} \emph{were the risk factors significantly associated
+  with the birth weight of a newborn(Metgud,2012)}
+\item
+  \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3390317/\#}{Click
+  Here to see the original paper}
+\end{itemize}
+
+For the current homework, I will choose variable\texttt{gaweeks}(as
+measurement for inter-pregnancy interval) and \texttt{momage}(as
+measurement for late child bearing)as my predictor, and \texttt{bwt} as
+my outcome.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{birthweight_df }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{gaweeks,}\DataTypeTok{y=}\NormalTok{bwt,}\DataTypeTok{color=}\NormalTok{momage))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha=}\FloatTok{0.5}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.9\linewidth]{p8106_hw6_jn2761_files/figure-latex/unnamed-chunk-3-1}
+
+Fit in a linear model:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Lin_mod =}\StringTok{ }\KeywordTok{lm}\NormalTok{(bwt }\OperatorTok{~}\StringTok{ }\NormalTok{momage }\OperatorTok{+}\StringTok{ }\NormalTok{gaweeks, }\DataTypeTok{data =}\NormalTok{ birthweight_df)}
+\NormalTok{broom}\OperatorTok{::}\KeywordTok{tidy}\NormalTok{(Lin_mod)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 5
+##   term        estimate std.error statistic   p.value
+##   <chr>          <dbl>     <dbl>     <dbl>     <dbl>
+## 1 (Intercept)    300.      92.4       3.25 1.17e-  3
+## 2 momage          11.9      1.83      6.50 9.23e- 11
+## 3 gaweeks         65.3      2.25     29.0  2.83e-169
+\end{verbatim}
+
+\hypertarget{plot-of-model-residuals-against-fitted-value}{%
+\subsubsection{plot of model residuals against fitted
+value}\label{plot-of-model-residuals-against-fitted-value}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(patchwork)}
+
+\NormalTok{momage_res=}
+\NormalTok{modelr}\OperatorTok{::}\KeywordTok{add_residuals}\NormalTok{(birthweight_df, Lin_mod) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{momage,}\DataTypeTok{y=}\NormalTok{resid))}\OperatorTok{+}
+\StringTok{   }\KeywordTok{geom_point}\NormalTok{() }
+
+\NormalTok{gaweeks_res=}
+\NormalTok{modelr}\OperatorTok{::}\KeywordTok{add_residuals}\NormalTok{(birthweight_df, Lin_mod) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{gaweeks,}\DataTypeTok{y=}\NormalTok{resid))}\OperatorTok{+}
+\StringTok{   }\KeywordTok{geom_point}\NormalTok{() }
+
+\NormalTok{momage_res}\OperatorTok{+}\NormalTok{gaweeks_res}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.9\linewidth]{p8106_hw6_jn2761_files/figure-latex/unnamed-chunk-5-1}
+
+\hypertarget{comparing-with-two-other-model}{%
+\subsubsection{Comparing with two other
+model}\label{comparing-with-two-other-model}}
+
+\hypertarget{length-at-birth-and-gestational-age-as-predictors-main-effects-only}{%
+\paragraph{1. length at birth and gestational age as predictors (main
+effects
+only)}\label{length-at-birth-and-gestational-age-as-predictors-main-effects-only}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod1 =}\StringTok{ }\KeywordTok{lm}\NormalTok{(bwt }\OperatorTok{~}\StringTok{ }\NormalTok{blength }\OperatorTok{+}\StringTok{ }\NormalTok{gaweeks, }\DataTypeTok{data =}\NormalTok{ birthweight_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{head-circumference-length-sex-and-all-interactions-including-the-three-way-interaction}{%
+\paragraph{2. head circumference, length, sex, and all interactions
+(including the three-way
+interaction)}\label{head-circumference-length-sex-and-all-interactions-including-the-three-way-interaction}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod2 =}\StringTok{ }\KeywordTok{lm}\NormalTok{(bwt }\OperatorTok{~}\StringTok{ }\NormalTok{bhead }\OperatorTok{+}\StringTok{ }\NormalTok{blength }\OperatorTok{+}\StringTok{ }\NormalTok{babysex }\OperatorTok{+}\StringTok{ }\NormalTok{bhead}\OperatorTok{*}\NormalTok{blength }\OperatorTok{+}\StringTok{ }\NormalTok{bhead}\OperatorTok{*}\NormalTok{babysex }\OperatorTok{+}\StringTok{ }\NormalTok{blength}\OperatorTok{*}\NormalTok{babysex }\OperatorTok{+}\StringTok{ }\NormalTok{bhead}\OperatorTok{*}\NormalTok{blength}\OperatorTok{*}\NormalTok{babysex, }\DataTypeTok{data =}\NormalTok{ birthweight_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{compare}{%
+\paragraph{Compare}\label{compare}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cv_df=}
+\StringTok{  }\KeywordTok{crossv_mc}\NormalTok{(birthweight_df,}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{train =} \KeywordTok{map}\NormalTok{(train, as_tibble),}
+    \DataTypeTok{test =} \KeywordTok{map}\NormalTok{(test, as_tibble)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{mod0  =} \KeywordTok{map}\NormalTok{(train, }\OperatorTok{~}\KeywordTok{lm}\NormalTok{(bwt }\OperatorTok{~}\StringTok{ }\NormalTok{momage }\OperatorTok{+}\StringTok{ }\NormalTok{gaweeks, }\DataTypeTok{data =}\NormalTok{ .x)),}
+    \DataTypeTok{mod1  =} \KeywordTok{map}\NormalTok{(train, }\OperatorTok{~}\KeywordTok{lm}\NormalTok{(bwt }\OperatorTok{~}\StringTok{ }\NormalTok{blength }\OperatorTok{+}\StringTok{ }\NormalTok{gaweeks, }\DataTypeTok{data =}\NormalTok{ .x)),}
+    \DataTypeTok{mod2  =} \KeywordTok{map}\NormalTok{(train, }\OperatorTok{~}\KeywordTok{lm}\NormalTok{(bwt }\OperatorTok{~}\StringTok{ }\NormalTok{bhead }\OperatorTok{+}\StringTok{ }\NormalTok{blength }\OperatorTok{+}\StringTok{ }\NormalTok{babysex }\OperatorTok{+}\StringTok{ }\NormalTok{bhead}\OperatorTok{*}\NormalTok{blength }\OperatorTok{+}\StringTok{ }\NormalTok{bhead}\OperatorTok{*}\NormalTok{babysex }\OperatorTok{+}\StringTok{ }\NormalTok{blength}\OperatorTok{*}\NormalTok{babysex }\OperatorTok{+}\StringTok{ }\NormalTok{bhead}\OperatorTok{*}\NormalTok{blength}\OperatorTok{*}\NormalTok{babysex, }\DataTypeTok{data =}\NormalTok{ .x))) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{rmse_mod0 =} \KeywordTok{map2_dbl}\NormalTok{(mod0, test, }\OperatorTok{~}\KeywordTok{rmse}\NormalTok{(}\DataTypeTok{model =}\NormalTok{ .x, }\DataTypeTok{data =}\NormalTok{ .y)),}
+    \DataTypeTok{rmse_mod1 =} \KeywordTok{map2_dbl}\NormalTok{(mod1, test, }\OperatorTok{~}\KeywordTok{rmse}\NormalTok{(}\DataTypeTok{model =}\NormalTok{ .x, }\DataTypeTok{data =}\NormalTok{ .y)),}
+    \DataTypeTok{rmse_mod2 =} \KeywordTok{map2_dbl}\NormalTok{(mod2, test, }\OperatorTok{~}\KeywordTok{rmse}\NormalTok{(}\DataTypeTok{model =}\NormalTok{ .x, }\DataTypeTok{data =}\NormalTok{ .y)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cv_df }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\KeywordTok{starts_with}\NormalTok{(}\StringTok{"rmse"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pivot_longer}\NormalTok{(}
+    \KeywordTok{everything}\NormalTok{(),}
+    \DataTypeTok{names_to =} \StringTok{"model"}\NormalTok{, }
+    \DataTypeTok{values_to =} \StringTok{"rmse"}\NormalTok{,}
+    \DataTypeTok{names_prefix =} \StringTok{"rmse_"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{model =} \KeywordTok{fct_inorder}\NormalTok{(model)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ model, }\DataTypeTok{y =}\NormalTok{ rmse)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_violin}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.9\linewidth]{p8106_hw6_jn2761_files/figure-latex/unnamed-chunk-9-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cv_df }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\KeywordTok{starts_with}\NormalTok{(}\StringTok{"rmse"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pivot_longer}\NormalTok{(}
+    \KeywordTok{everything}\NormalTok{(),}
+    \DataTypeTok{names_to =} \StringTok{"model"}\NormalTok{, }
+    \DataTypeTok{values_to =} \StringTok{"rmse"}\NormalTok{,}
+    \DataTypeTok{names_prefix =} \StringTok{"rmse_"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(model) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{avg_rmse =} \KeywordTok{mean}\NormalTok{(rmse))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   model avg_rmse
+##   <chr>    <dbl>
+## 1 mod0      464.
+## 2 mod1      332.
+## 3 mod2      288.
+\end{verbatim}
+
+In here we see that model 2 (head circumference, length, sex, and all
+interactions) have the smallest root mean squared errors, thus provide
+the best model for predicting birthweight
+
+\hypertarget{problem-3}{%
+\subsection{Problem 3}\label{problem-3}}
+
+\hypertarget{import-data-1}{%
+\subsubsection{Import data}\label{import-data-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather_df =}\StringTok{ }
+\StringTok{  }\NormalTok{rnoaa}\OperatorTok{::}\KeywordTok{meteo_pull_monitors}\NormalTok{(}
+    \KeywordTok{c}\NormalTok{(}\StringTok{"USW00094728"}\NormalTok{),}
+    \DataTypeTok{var =} \KeywordTok{c}\NormalTok{(}\StringTok{"PRCP"}\NormalTok{, }\StringTok{"TMIN"}\NormalTok{, }\StringTok{"TMAX"}\NormalTok{), }
+    \DataTypeTok{date_min =} \StringTok{"2017-01-01"}\NormalTok{,}
+    \DataTypeTok{date_max =} \StringTok{"2017-12-31"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{name =} \KeywordTok{recode}\NormalTok{(id, }\DataTypeTok{USW00094728 =} \StringTok{"CentralPark_NY"}\NormalTok{),}
+    \DataTypeTok{tmin =}\NormalTok{ tmin }\OperatorTok{/}\StringTok{ }\DecValTok{10}\NormalTok{,}
+    \DataTypeTok{tmax =}\NormalTok{ tmax }\OperatorTok{/}\StringTok{ }\DecValTok{10}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(name, id, }\KeywordTok{everything}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'hoardr':
+##   method           from
+##   print.cache_info httr
+\end{verbatim}
+
+\begin{verbatim}
+## using cached file: /Users/jiayingning/Library/Caches/R/noaa_ghcnd/USW00094728.dly
+\end{verbatim}
+
+\begin{verbatim}
+## date created (size, mb): 2020-10-08 12:25:57 (7.525)
+\end{verbatim}
+
+\begin{verbatim}
+## file min/max dates: 1869-01-01 / 2020-10-31
+\end{verbatim}
+
+\hypertarget{bootstrapping}{%
+\subsubsection{Bootstrapping}\label{bootstrapping}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather_bootstrap=}
+\NormalTok{weather_df }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{modelr}\OperatorTok{::}\KeywordTok{bootstrap}\NormalTok{(}\DataTypeTok{n =} \DecValTok{5000}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{models =} \KeywordTok{map}\NormalTok{(strap, }\OperatorTok{~}\StringTok{ }\KeywordTok{lm}\NormalTok{(tmax }\OperatorTok{~}\StringTok{ }\NormalTok{tmin, }\DataTypeTok{data =}\NormalTok{ .x)))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{plot-distribution-of-estimate}{%
+\paragraph{Plot distribution of
+estimate}\label{plot-distribution-of-estimate}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather_bootstrap }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{results =} \KeywordTok{map}\NormalTok{(models, broom}\OperatorTok{::}\NormalTok{tidy)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(results) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest}\NormalTok{(results) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(term }\OperatorTok{==}\StringTok{ "tmin"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ estimate)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_density}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.9\linewidth]{p8106_hw6_jn2761_files/figure-latex/unnamed-chunk-13-1}
+
+This distribution of regression coefficient is relatively normal, which
+means that bootstrap has succefully resample the dataset with
+replacement and establish normality and satisified distributional
+assumption.
+
+\hypertarget{confidence-interval-for-r-2}{%
+\paragraph{95\% confidence interval for r̂
+2}\label{confidence-interval-for-r-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather_bootstrap}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{results =} \KeywordTok{map}\NormalTok{(models, broom}\OperatorTok{::}\NormalTok{glance)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(results) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest}\NormalTok{(results) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{ci_lower=}\KeywordTok{quantile}\NormalTok{(r.squared,}\FloatTok{0.025}\NormalTok{),}
+    \DataTypeTok{ci_upper=}\KeywordTok{quantile}\NormalTok{(r.squared,}\FloatTok{0.975}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   ci_lower ci_upper
+##      <dbl>    <dbl>
+## 1    0.894    0.927
+\end{verbatim}
+
+\hypertarget{confidence-interval-for-logux3b2-0ux3b2-1}{%
+\paragraph{95\% confidence interval for log(β̂ 0∗β̂
+1)}\label{confidence-interval-for-logux3b2-0ux3b2-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather_bootstrap}\OperatorTok{%>%}
+\StringTok{   }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{results =} \KeywordTok{map}\NormalTok{(models, broom}\OperatorTok{::}\NormalTok{tidy))}\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(results,.id) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest}\NormalTok{(results)  }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(term,estimate,.id)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pivot_wider}\NormalTok{(}
+  \DataTypeTok{names_from =} \StringTok{"term"}\NormalTok{,  }
+  \DataTypeTok{values_from =} \StringTok{"estimate"}\NormalTok{)}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{unnest}\NormalTok{()}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{( }\DataTypeTok{log =} \KeywordTok{log}\NormalTok{(}\StringTok{`}\DataTypeTok{(Intercept)}\StringTok{`}\OperatorTok{*}\NormalTok{tmin)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{ci_lower=}\KeywordTok{quantile}\NormalTok{(log,}\FloatTok{0.025}\NormalTok{),}
+    \DataTypeTok{ci_upper=}\KeywordTok{quantile}\NormalTok{(log,}\FloatTok{0.975}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: `cols` is now required when using unnest().
+## Please use `cols = c()`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   ci_lower ci_upper
+##      <dbl>    <dbl>
+## 1     1.96     2.06
+\end{verbatim}
+
+\end{document}
